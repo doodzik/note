@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -p|--path-only)
+    PATH_ONLY=YES
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    CURRENT_DIR="$1"
+    shift # past argument
+    ;;
+esac
+done
+
+if [ -n "$CURRENT_DIR" ]; then
+  cd "$CURRENT_DIR"
+fi
+
+# https://stackoverflow.com/questions/2180270/check-if-current-directory-is-a-git-repository
+[ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1
+if [ ! $? -eq 0 ]; then
+  echo "Make sure that you are in a directory that is tracked by git"
+  exit 1
+fi
+git log > /dev/null 2>&1
+if [ ! $? -eq 0 ]; then
+  echo "To add a note a repo it has to have at least one commit"
+  exit 1
+fi
+
+NOTES_LOCATION=${NOTES_LOCATION:="${HOME}/.notes"}
+git_first_commit_hash=$(git rev-list --max-parents=0 HEAD)
+path_to_node="${NOTES_LOCATION}/${git_first_commit_hash}.txt"
+
+mkdir -p "$NOTES_LOCATION"
+if [ ! -f "$path_to_node" ]; then
+  echo -n "# " > "$path_to_node" 
+  basename `git rev-parse --show-toplevel` >> "$path_to_node" 
+  echo >> "$path_to_node" 
+  echo >> "$path_to_node" 
+fi
+
+if [ -n "$CURRENT_DIR" ]; then
+  cd - > /dev/null
+fi
+
+if [ -n "$PATH_ONLY" ]; then
+  echo "$path_to_node"
+  exit 0
+fi
+
+$EDITOR "$path_to_node"
+exit 0
+
