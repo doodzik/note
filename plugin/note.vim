@@ -22,9 +22,18 @@ endfunction
 
 " main
 function! s:openNoteFn(...)
-    let path = a:0 == 1 ? a:1 : ""
-    let cmd  = "note --path-only " . path
-    let note_path = ChompedSystem(cmd)
-    execute "sp " . note_path
+  let arg_exists = strlen(a:1) > 0
+  if arg_exists 
+    execute "cd ". a:1
+  endif
+
+  let cmd  = "note --path-only"
+  let note_path = ChompedSystem(cmd)
+
+  if arg_exists
+    cd -
+  endif
+
+  execute "sp " . note_path
 endfunction
 
