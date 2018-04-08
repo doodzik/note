@@ -59,3 +59,7 @@ For example, you can change the `NOTES_LOCATION` to point to the iCloud folder i
 export NOTES_LOCATION="${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/.notes"
 ```
 
+## Special Thanks
+
+* [@lastgabs](https://github.com/lastgabs) for giving me the idea for this project
+
