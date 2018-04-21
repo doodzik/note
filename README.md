@@ -1,8 +1,8 @@
 # Note
 
-A bash function which opens a note file for the underlying repository. 
-The note files are stored separately from the repository, which prevents issues with git.
-You can change the name, the origin, or the path of the repository and your note will still be there.
+Note is a bash script which opens a note for the underlying repository. 
+The notes are stored separately from the repository, which prevents issues with git.
+You can change the name, the origin, or the path of the repository and you will still be able to access the note.
 
 ## Installation
 
@@ -57,6 +57,14 @@ You can use a cloud synchronized folder as the location for your notes.
 For example, you can change the `NOTES_LOCATION` to point to the iCloud folder in your `.bashrc` file.
 ```
 export NOTES_LOCATION="${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/.notes"
+```
+
+### Change your Editor
+
+You can use your editor of choice by changing the `EDITOR` variable in your `.bashrc` file.
+
+```
+export EDITOR="/usr/local/bin/vim"
 ```
 
 ## Special Thanks
