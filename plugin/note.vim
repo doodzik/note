@@ -11,7 +11,7 @@ endif
 
 " map <Plug> to internal function
 nnoremap <unique> <script> <Plug>openNote <SID>openNote
-nnoremap <SID>openNote :call <SID>openNoteFn()<CR>
+nnoremap <SID>openNote :call <SID>openNoteFn('')<CR>
 
 command! -nargs=* Note call s:openNoteFn(<q-args>)
 
@@ -34,6 +34,6 @@ function! s:openNoteFn(...)
     cd -
   endif
 
-  execute "sp " . note_path
+  execute "e " . note_path
 endfunction
 
