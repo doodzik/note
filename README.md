@@ -11,7 +11,7 @@ $ brew tap doodzik/tap
 $ brew install note
 ```
 
-To use note in Vim, add the following line to your .vimrc:
+To use note in Vim, add the following line to your .vimrc
 ```
 set rtp+=/usr/local/opt/note
 ```
@@ -35,7 +35,7 @@ $ note --path-only
 
 ### Vim
 
-Open the note for the underlying repository in split view 
+Open the note for the underlying repository
 ```
 :Note
 ```
@@ -45,7 +45,7 @@ Open a note for the repository for a given path
 :Note ~
 ```
 
-Open the note for the underlying repository in split view.
+Open the note for the underlying repository.
 Unless not mapped onto a different command.
 ```
 gn
@@ -61,8 +61,7 @@ export NOTES_LOCATION="${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/.no
 
 ### Change your Editor
 
-You can use your editor of choice by changing the `EDITOR` variable in your `.bashrc` file.
-
+You can use your editor of choice by changing the `EDITOR` variable in your `.bashrc` file
 ```
 export EDITOR="/usr/local/bin/vim"
 ```
