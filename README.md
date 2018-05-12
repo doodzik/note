@@ -4,6 +4,8 @@ Note is a bash script which opens a note for the underlying repository.
 The notes are stored separately from the repository, which prevents issues with git.
 You can change the name, the origin, or the path of the repository and you will still be able to access the note.
 
+[![asciicast](https://asciinema.org/a/181206.png)](https://asciinema.org/a/181206)
+
 ## Installation
 
 ```
